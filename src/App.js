@@ -109,7 +109,7 @@ export default class App extends React.Component {
             </nav>
             <a
               className="github"
-              href="https://github.com/faizahmedfarooqui/ycombinator-react"
+              href="https://github.com/anil1712/hacker-news-react-app.git"
               target="_blank"
               rel="noopener noreferrer"
             >
