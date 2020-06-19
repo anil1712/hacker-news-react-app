@@ -3,8 +3,15 @@ export * from './ssr';
 import Cookies from 'universal-cookie';
 const cookies = new Cookies();
 
+export const getVotedScore = item => {
+  const upvotes = cookies.get("upvotes");
+  const _upvotes = upvotes || [];
+  return _upvotes.filter(v => v === item.id).length;
+}
+
 export const upVote = item => {
   const upvotes = cookies.get("upvotes");
+  console.log('upvotes', upvotes);
   let _upvotes = upvotes || [];
 
   // const index = _upvotes.indexOf(item.id);
@@ -13,9 +20,12 @@ export const upVote = item => {
   // } else {
   //   _upvotes.push(item.id);    
   // }
-  // _upvotes = _upvotes.filter(onlyUnique);
 
   _upvotes.push(item.id);
+  //_upvotes = _upvotes.filter(onlyUnique);
+
+  console.log('_upvotes', _upvotes);
+
   cookies.set("upvotes", JSON.stringify(_upvotes));
 };
 

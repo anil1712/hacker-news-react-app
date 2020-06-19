@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 import {
-  withSsr, host, timeAgo, hideItem, itemExist, upVote, isVoted
+  withSsr, host, timeAgo, hideItem, itemExist, upVote, isVoted, getVotedScore
 } from 'utils';
 import { startCase } from 'lodash';
 
@@ -10,7 +10,7 @@ import styles from './styles';
 
 const show = (item, _voted) => (
   <li className="news-item">
-    <span className="score">{_voted ? parseInt(item.score) + 1 : item.score}</span>
+    <span className="score">{_voted ? getVotedScore(item) : item.score}</span>
     <span className="title">
       <Link onClick={() => upVote(item)} className="vote">{_voted ? "\u25B2" : "\u25B3"}</Link>
       {' '}{item.url ? (
@@ -50,6 +50,7 @@ const show = (item, _voted) => (
 );
 
 const Item = ({ item }) => {
+  console.log('Item:item', item);
   const _voted = isVoted(item);
   return itemExist(item) ? null : show(item, _voted);
 };

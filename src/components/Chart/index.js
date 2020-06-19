@@ -1,6 +1,6 @@
 import React from 'react';
 import Chart from 'react-google-charts';
-import { isVoted, itemExist } from '../../utils';
+import { isVoted, itemExist, getVotedScore } from '../../utils';
 
 export default class LineChart extends React.Component {
   render() {
@@ -10,13 +10,15 @@ export default class LineChart extends React.Component {
       ["ID", "Votes"]
     ];
 
+    console.log('LineChart:displayedItems', displayedItems)
     displayedItems.forEach(item => {
-      if (itemExist(item)) {
+      console.log('LineChart:item', item);
+      if (!itemExist(item)) {
         const _voted = isVoted(item);
         const _score = parseInt(item.score);
         data.push([
           item.id + '',
-          _voted ? _score + 1 : _score
+          _voted ? getVotedScore(item) : _score
         ]);
       }
     });

@@ -163,6 +163,8 @@ export default class ItemList extends React.Component {
 
     const { loading, type } = this.props;
 
+    console.log('ItemList:activeItems', activeItems)
+
     return (
       <div className="news-view">
         <div className="news-list-nav">
