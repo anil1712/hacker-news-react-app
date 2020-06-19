@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
-import { 
+import {
   withSsr, host, timeAgo, hideItem, itemExist, upVote, isVoted
 } from 'utils';
 import { startCase } from 'lodash';
@@ -12,7 +12,7 @@ const show = (item, _voted) => (
   <li className="news-item">
     <span className="score">{_voted ? parseInt(item.score) + 1 : item.score}</span>
     <span className="title">
-      <Link onClick={() => upVote(item)} className="vote">{_voted ? "\u25B2" : "\u25B3"}</Link> 
+      <Link onClick={() => upVote(item)} className="vote">{_voted ? "\u25B2" : "\u25B3"}</Link>
       {' '}{item.url ? (
         <>
           <a href={item.url} target="_blank" rel="noopener noreferrer">
@@ -21,8 +21,8 @@ const show = (item, _voted) => (
           <span className="host"> ({host(item.url)})</span>
         </>
       ) : (
-        <Link to={'/item/' + item.id}>{item.title}</Link>
-      )}
+          <Link to={'/item/' + item.id}>{item.title}</Link>
+        )}
     </span>
     <br />
     <span className="meta">
@@ -51,7 +51,7 @@ const show = (item, _voted) => (
 
 const Item = ({ item }) => {
   const _voted = isVoted(item);
-  return itemExist(item) ? null : show (item, _voted);
+  return itemExist(item) ? null : show(item, _voted);
 };
 
 Item.propTypes = {

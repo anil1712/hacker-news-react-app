@@ -1,23 +1,24 @@
 import React from 'react';
 import Chart from 'react-google-charts';
-
-import { isVoted } from '../../utils';
+import { isVoted, itemExist } from '../../utils';
 
 export default class LineChart extends React.Component {
-	render () {
-		const { displayedItems } = this.props;
+  render() {
+    const { displayedItems } = this.props;
 
-		const data = [
+    const data = [
       ["ID", "Votes"]
     ];
 
-		displayedItems.forEach(item => {
-      const _voted = isVoted(item);
-      const _score = parseInt(item.score);
-      data.push([
-        item.id + '', 
-        _voted ? _score + 1 : _score
-      ]);
+    displayedItems.forEach(item => {
+      if (itemExist(item)) {
+        const _voted = isVoted(item);
+        const _score = parseInt(item.score);
+        data.push([
+          item.id + '',
+          _voted ? _score + 1 : _score
+        ]);
+      }
     });
 
     const options = {
@@ -32,14 +33,14 @@ export default class LineChart extends React.Component {
       }
     };
 
-		return displayedItems.length <= 1 ? null : (
-			<Chart
-				chartType="LineChart"
-				width="100%"
-				height="400px"
-				data={data}
-				options={options}
-			/>
-		);
-	}
+    return displayedItems.length <= 1 ? null : (
+      <Chart
+        chartType="LineChart"
+        width="100%"
+        height="400px"
+        data={data}
+        options={options}
+      />
+    );
+  }
 }

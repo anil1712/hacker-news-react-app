@@ -169,16 +169,16 @@ export default class ItemList extends React.Component {
           {page > 1 ? (
             <Link to={'/' + type + '/' + (page - 1)}>&lt; prev</Link>
           ) : (
-            <a className="disabled">&lt; prev</a>
-          )}
+              <a className="disabled">&lt; prev</a>
+            )}
           <span>
             {page}/{maxPage}
           </span>
           {hasMore ? (
             <Link to={'/' + type + '/' + (page + 1)}>more &gt;</Link>
           ) : (
-            <a className="disabled">more &gt;</a>
-          )}
+              <a className="disabled">more &gt;</a>
+            )}
         </div>
         <CSSTransition
           in={displayedPage > 0}
@@ -198,19 +198,19 @@ export default class ItemList extends React.Component {
                     key={item.id}
                     classNames={itemTransition}
                     timeout={itemTransition ? 500 : 0}
-                  >                  
+                  >
                     <Item item={item} />
                   </CSSTransition>
                 ))}
                 <LineChart displayedItems={activeItems} />
               </TransitionGroup>
             ) : (
-              <div className="loading">
-                <Spinner show={true} />
-              </div>
-            )}            
+                <div className="loading">
+                  <Spinner show={true} />
+                </div>
+              )}
           </div>
-        </CSSTransition>        
+        </CSSTransition>
       </div>
     )
   }

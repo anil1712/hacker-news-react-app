@@ -17,7 +17,7 @@ export function createAPI({ config, version }) {
     // fetched item cache
     api.cachedItems = new LRU({
       max: 1000,
-      maxAge: 1000 * 60 * 15, // 15 min cache
+      maxAge: 1000 * 60 * 0.01, // 15 min cache
     });
 
     // cache the latest story ids

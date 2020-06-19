@@ -6,7 +6,7 @@
   "author": "anilkumarpandey <anil.kumar17pandey@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "dev": "./node_modules/.bin/cross-env DEBUG=hnra:* babel-node server",
+    "dev": "./node_modules/.bin/cross-env DEBUG=hnra:* babel-node build/react.server.babel.js",
     "build:react:client": "webpack --config=build/react.client.babel.js --colors --progress",
     "build:react:server": "webpack --config=build/react.server.babel.js --colors --progress",
     "build:server": "webpack --config build/server.babel.js --colors --progress",

@@ -7,14 +7,16 @@ export const upVote = item => {
   const upvotes = cookies.get("upvotes");
   let _upvotes = upvotes || [];
 
-  const index = _upvotes.indexOf(item.id);
-  if (index !== -1) {
-    _upvotes.splice(index, 1);
-  } else {
-    _upvotes.push(item.id);    
-  }
-  _upvotes = _upvotes.filter(onlyUnique);
-  cookies.set("upvotes", JSON.stringify(_upvotes));  
+  // const index = _upvotes.indexOf(item.id);
+  // if (index !== -1) {
+  //   _upvotes.splice(index, 1);
+  // } else {
+  //   _upvotes.push(item.id);    
+  // }
+  // _upvotes = _upvotes.filter(onlyUnique);
+
+  _upvotes.push(item.id);
+  cookies.set("upvotes", JSON.stringify(_upvotes));
 };
 
 export const isVoted = item => {
